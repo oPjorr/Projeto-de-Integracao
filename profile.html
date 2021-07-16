@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://unpkg.com/sweetalert2@9/dist/sweetalert2.all.js"></script>
+    <link rel="stylesheet" href="./css/estilo.css" />
+
+    <title>Lista de Tarefas</title>
+  </head>
+  <body>
+    <div id="page" class="d-flex">
+      <div id="sidebar" class="border-right bg-dark">
+        <header class="text-primary font-weight-bold bg-dark">Menu</header>
+        <nav class="list-group list-group-flush">
+          <a
+            href="index.html"
+            class="list-group-item list-group-item-action bg-dark text-white"
+          >
+            <ion-icon name="home"></ion-icon> Início</a
+          >
+          <a
+            href="profile.html"
+            class="list-group-item list-group-item-action bg-dark text-white"
+          >
+            <ion-icon name="person"></ion-icon> Perfil</a
+          >
+          <a
+            href="#"
+            onclick="logout()"
+            class="list-group-item list-group-item-action bg-dark text-white"
+          >
+            <ion-icon name="log-out"></ion-icon> Sair</a
+          >
+        </nav>
+      </div>
+      <div id="page-content">
+        <nav class="navbar navbar-expand-lg navbar-dark border-bottom">
+          <buttom id="sidebar-toggle" class="navbar-toggler-icon"></buttom>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span>
+              <ion-icon name="caret-down" size="large"></ion-icon>
+            </span>
+          </button>
+          <div id="navbarSupportedContent" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto mt-2">
+              <li class="nav-item active">
+                <a href="index.html" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  id="navbarDropdown"
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >Meu Usuário</a
+                >
+                <div
+                  class="dropdown-menu dropdown-menu-right"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <a href="profile.html" class="dropdown-item">Perfil</a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item" onclick="logout()">Sair</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="cotainer-fluid">
+          <div class="card d-flex">
+            <div class="card-body text-white">
+              <h1 class="card-title mt-2 ml-1">Meu perfil</h1>
+              <h5 id="userInfo" class="card-subtitle mb-5 ml-2">Perfil</h5>
+              <form>
+                <div class="form-group">
+                  <label for="inputFirstName">Nome</label>
+                  <input id="inputFirstName" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label for="inputLasttName">Sobrenome</label>
+                  <input id="inputLastName" type="text" class="form-control" />
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  onclick="saveProfile()"
+                >
+                  Salvar perfil
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https: // unpkg .com / ionicons @ 5.5.2 / dist / ionicons / ionicons.js "
+    ></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+
+    <script src="./js/init.js"></script>
+    <script src="./js/profile.js"></script>
+    <script src="./js/auth.js"></script>
+
+    <script>
+      $("#sidebar-toggle").click(function (e) {
+        e.preventDefault();
+        $("#page").toggleClass("toggled");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+
+body {
+  font-family: Raleway, sans-serif;
+  background-color: #17191a;
+}
+
+#page {
+  overflow-x: hidden;
+}
+
+#page.toggled #sidebar {
+  margin-left: -15rem;
+}
+
+#sidebar {
+  min-height: 100vh;
+  margin-left: 0;
+  width: 15rem;
+  -webkit-transition: margin 0.5s ease-out;
+  -moz-transition: margin 0.5s ease-out;
+  -o-transition: margin 0.5s ease-out;
+  transition: margin 0.5s ease-out;
+}
+
+#sidebar header {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#page-content {
+  min-width: 0;
+  width: 100%;
+}
+
+#livroslogo img {
+  width: 85%;
+}
+
+.btn-outline-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.d-flex {
+  background-color: #17191a;
+}
+
+.navbar-toggler-icon {
+  cursor: pointer;
+}
